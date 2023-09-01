@@ -10,15 +10,19 @@ namespace BooksAppNet.Controllers.Books
 {
     public class BooksController : Controller
     {
-        private BooksService booksService;
+        private readonly IBooksService booksService;
+
+        public BooksController(IBooksService booksService)
+        {
+            this.booksService = booksService;
+        }
 
         public async Task<IActionResult> Index()
         {
-            this.booksService = new BooksService();
 
             await this.booksService.GetBookList();
 
-            return View(booksService.Books);
+            return View(booksService.GetBooks());
         }
     }
 }

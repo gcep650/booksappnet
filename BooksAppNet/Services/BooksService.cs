@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 
 namespace BooksAppNet.Services
 {
-	public class BooksService
+	public class BooksService : IBooksService
 	{
-		public List<BookModel> Books { get; private set; }
+        private List<BookModel> Books;
 		private string apiUrl = "http://localhost:3000/books/";
 
 		public BooksService()
@@ -33,6 +33,31 @@ namespace BooksAppNet.Services
 
             }
         }
-	}
+
+        public List<BookModel> GetBooks()
+        {
+            return Books;
+        }
+
+        public Task<BookModel> GetBookByID(int bookId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> AddBook(BookModel book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BookModel> UpdateBook(BookModel updated)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteBook(int bookId)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 

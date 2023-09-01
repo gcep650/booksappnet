@@ -1,4 +1,8 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BooksAppNet.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IBooksService, BooksService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
