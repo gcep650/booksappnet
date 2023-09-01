@@ -1,13 +1,34 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+
 namespace BooksAppNet.Models
 {
 	public class BookModel
 	{
+		[DisplayName("Book ID")]
+        [JsonProperty("book_id")]
 		public int BookId { get; set; }
+
+		[DisplayName("Title")]
+        [JsonProperty("title")]
 		public string Title { get; set; }
+
+		[DisplayName("Author")]
+		[JsonProperty("author")]
 		public string Author { get; set; }
+
+		[DisplayName("Genre")]
+		[JsonProperty("genre")]
 		public string Genre { get; set; }
+
+		[DisplayName("Page Count")]
+		[JsonProperty("page_count")]
 		public int PageCount { get; set; }
+
+		[DisplayName("Publication Date")]
+		[JsonProperty("publish_date")]
 		public DateTime PublishDate { get; set; }
 
 		public BookModel()

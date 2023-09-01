@@ -1,0 +1,65 @@
+@model IEnumerable<BookModel>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Books</title>
+</head>
+<body>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PageCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+            {
+                <tr>
+                    <td>
+                        <b>@book.BookId</b>
+                    </td>
+                    <td>
+                        @book.Title
+                    </td>
+                    <td>
+                        @book.Author
+                    </td>
+                    <td>
+                        @book.Genre
+                    </td>
+                    <td>
+                        @book.PageCount page(s)
+                    </td>
+                    <td>
+                        @book.PublishDate.ToShortDateString()
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
