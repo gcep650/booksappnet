@@ -1,0 +1,45 @@
+@model BookModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add New Book</title>
+</head>
+<body>
+    <h1>Add New Book</h1>
+    <form asp-action="ProcessAddBook">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">@Html.DisplayNameFor(model => model.Title)</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Author" class="form-label">@Html.DisplayNameFor(model => model.Author)</label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Genre" class="form-label">@Html.DisplayNameFor(model => model.Genre)</label>
+            <input asp-for="Genre" class="form-control" />
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PageCount" class="form-label">@Html.DisplayNameFor(model => model.PageCount)</label>
+            <input asp-for="PageCount" class="form-control" />
+            <span asp-validation-for="PageCount" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PublishDate" class="form-label">@Html.DisplayNameFor(model => model.PublishDate)</label>
+            <input asp-for="PublishDate" class="form-control" />
+            <span asp-validation-for="PublishDate" class="text-danger"></span>
+        </div>
+
+        <button type="submit" value="AddBook" class="btn btn-primary">Submit Book</button>
+    </form>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>

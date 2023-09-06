@@ -24,5 +24,12 @@ namespace BooksAppNet.Controllers.Books
 
             return View(booksService.GetBooks());
         }
+
+        public IActionResult AddBook()
+        {
+            BookModel book = new BookModel();
+
+            return View(book);
+        }
     }
 }
