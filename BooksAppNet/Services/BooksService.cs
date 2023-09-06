@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using BooksAppNet.Models;
 using Newtonsoft.Json;
 
@@ -44,9 +45,17 @@ namespace BooksAppNet.Services
             throw new NotImplementedException();
         }
 
-        public Task<bool> AddBook(BookModel book)
+        public async Task<bool> AddBook(BookModel book)
         {
-            throw new NotImplementedException();
+            using (var http = new HttpClient()) {
+
+                StringContent content = new StringContent(JsonConvert.SerializeObject(book), Encoding.UTF8, "application/json");
+
+                using (var response = await http.PostAsync(apiUrl, content))
+                {
+                    return response.StatusCode == System.Net.HttpStatusCode.OK;
+                }
+            }
         }
 
         public Task<BookModel> UpdateBook(BookModel updated)

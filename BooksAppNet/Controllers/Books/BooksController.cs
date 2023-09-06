@@ -31,5 +31,18 @@ namespace BooksAppNet.Controllers.Books
 
             return View(book);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ProcessAddBook(BookModel book)
+        {
+            if (book != null)
+            {
+                bool status = await booksService.AddBook(book);
+            }
+
+            await booksService.GetBookList();
+
+            return View("Index", booksService.GetBooks());
+        }
     }
 }
